@@ -1,0 +1,17 @@
+venv/
+
+.gitattributes
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+
+lib/
+lib64/

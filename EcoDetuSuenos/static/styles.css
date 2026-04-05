@@ -1,0 +1,120 @@
+/* Importación de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;500&display=swap');
+
+/* Configuración general y fondo místico */
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #05010a, #1a0b2e, #000000);
+    color: #e0e0e0;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Títulos elegantes */
+h1, h2 {
+    font-family: 'Cinzel', serif;
+    color: #d4af37;
+    text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+/* Enlace de cerrar sesión */
+a {
+    color: #b388ff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-bottom: 30px;
+    transition: text-shadow 0.3s ease, color 0.3s ease;
+}
+
+a:hover {
+    color: #d1c4e9;
+    text-shadow: 0 0 10px rgba(179, 136, 255, 0.8);
+}
+
+/* Caja de texto translúcida y de aspecto neón */
+textarea {
+    width: 100%;
+    max-width: 500px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(179, 136, 255, 0.3);
+    border-radius: 12px;
+    padding: 15px;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    resize: vertical;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+}
+
+textarea:focus {
+    border-color: #b388ff;
+    box-shadow: 0 0 20px rgba(179, 136, 255, 0.3), inset 0 0 10px rgba(0,0,0,0.5);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+/* Botón con efecto mágico */
+button {
+    margin-top: 25px;
+    padding: 12px 35px;
+    background: transparent;
+    color: #d4af37;
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: 2px solid #d4af37;
+    border-radius: 30px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.4s ease;
+}
+
+button:hover {
+    background: #d4af37;
+    color: #05010a;
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
+    transform: translateY(-2px);
+}
+
+/* Interpretación del Oráculo */
+#texto-interpretacion {
+    font-style: italic;
+    max-width: 600px;
+    font-size: 1.15rem; 
+    color: #d1c4e9; 
+    line-height: 1.6;
+    margin: 25px auto;
+    text-shadow: 0 0 8px rgba(179, 136, 255, 0.3);
+}
+
+/* Imagen generada por IA */
+#imagen-ia {
+    width: 100%;
+    max-width: 450px;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.9), 0 0 25px rgba(179, 136, 255, 0.15);
+    margin-top: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Animación de aparición suave */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#resultado, #texto-interpretacion, #imagen-ia {
+    animation: fadeIn 0.8s ease-out forwards;
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>El Eco de tus Sueños</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Cuéntame tu sueño...</h1>
+    <a href="/logout">Cerrar Sesión</a><br><br>
+    
+    <textarea id="sueno" rows="4" cols="50" placeholder="Anoche soñé que..."></textarea><br>
+    <button onclick="analizarSueno()">Analizar Sueño</button>
+
+    <h2 id="resultado"></h2>
+    
+    <p id="texto-interpretacion" style="font-style: italic; max-width: 600px; font-size: 18px; color: #333;"></p>
+    
+    <img id="imagen-ia" src="" alt="Representación del sueño" style="display:none; width: 300px; border-radius: 10px;">
+
+    <script>
+        async function analizarSueno() {
+            const texto = document.getElementById('sueno').value;
+            
+            // Mensajes de carga
+            document.getElementById('resultado').innerText = "El oráculo está analizando tu sueño...";
+            document.getElementById('texto-interpretacion').innerText = "";
+            document.getElementById('imagen-ia').style.display = "none";
+
+            const respuesta = await fetch('/analizar', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({texto: texto})
+            });
+            const data = await respuesta.json();
+            
+            const resultadoEl = document.getElementById('resultado');
+            const interpretacionEl = document.getElementById('texto-interpretacion');
+            const imagenEl = document.getElementById('imagen-ia');
+
+            if(data.emocion) {
+                resultadoEl.innerText = "La emoción de tu sueño es: " + data.emocion;
+                
+                // Mostrar la interpretación generada por Mistral
+                if(data.interpretacion) {
+                    interpretacionEl.innerText = `"${data.interpretacion}"`;
+                }
+
+                // Mostrar la imagen según la emoción
+                imagenEl.style.display = "block";
+                if(data.emocion === "Positiva") {
+                    imagenEl.src = "/static/multimedia/alegria_ia.jpg";
+                } else if(data.emocion === "Negativa") {
+                    imagenEl.src = "/static/multimedia/miedo_ia.jpg"; 
+                } else {
+                    imagenEl.src = "/static/multimedia/misterio_ia.jpg";
+                }
+            } else {
+                resultadoEl.innerText = "Hubo un error: " + (data.error || "Desconocido");
+            }
+        }
+    </script>
+</body>
+</html>
